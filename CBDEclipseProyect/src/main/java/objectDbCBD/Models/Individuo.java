@@ -88,7 +88,7 @@ public class Individuo implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Individuo [id=" + id + ", nombre=" + nombre + ", especie=" + especie + ", numCorazones=" + numCorazones
+		return "Individuo [nombre=" + nombre + ", especie=" + especie + ", numCorazones=" + numCorazones
 				+ ", organismo=" + organismo + ", descripcion=" + descripcion + "]";
 	}
 }
