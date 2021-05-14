@@ -46,7 +46,7 @@ public class Planeta implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Planeta [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", individuos="
+		return "Planeta [nombre=" + nombre + ", descripcion=" + descripcion + ", individuos="
 				+ individuos + "]";
 	}
 }
