@@ -21,6 +21,12 @@ public class Planeta implements Serializable{
 	@ManyToMany(targetEntity=Individuo.class,	mappedBy="esHabitadoPor")
 	private List<Individuo> individuos;
 
+	public Planeta(String nombre, String descripcion) {
+		super();
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+	}
+	
 	public Planeta(String nombre, String descripcion, List<Individuo> individuos) {
 		super();
 		this.nombre = nombre;
