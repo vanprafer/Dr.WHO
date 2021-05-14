@@ -23,7 +23,7 @@ public class main {
     public void createDatabase() throws Exception {	
 	
 		try{
-			EntityManagerFactory emf = Persistence.createEntityManagerFactory("C:\\Users\\ErMamaweboPlus\\Desktop\\matriculas.odb");
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("C:\\Users\\Vanessa\\Desktop\\DataBase.odb");
 			em = emf.createEntityManager();
 			
 			try {
