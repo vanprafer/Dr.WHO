@@ -1,39 +1,35 @@
 package objectDbCBD;
 
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
+import javax.persistence.PersistenceContext;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import objectDbCBD.Models.Especie;
-import objectDbCBD.Models.Individuo;
-import objectDbCBD.Models.Organismo;
 import objectDbCBD.Models.Planeta;
-import objectDbCBD.Models.Tecnologia;
+import repository.PlanetaRepositorio;
 
 @RestController
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 @ComponentScan(basePackages = { "controllers", "services" })
 public class main {
 	
-	static EntityManager em;
+	public static EntityManager em;
 	
 	@RequestMapping(value="/createDatabase",method=RequestMethod.GET)
-	//@GetMapping("/createDatabase")
     public void createDatabase() throws Exception {	
 	
 		try{
-			EntityManagerFactory emf = Persistence.createEntityManagerFactory("C:\\Users\\Vanessa\\Desktop\\DataBase.odb");
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("C:\\Users\\ErMamaweboPlus\\Desktop\\DataBase.odb");
 			em = emf.createEntityManager();
 			
 			try {
@@ -56,5 +52,4 @@ public class main {
 		}
 		
 	}
-
 }
