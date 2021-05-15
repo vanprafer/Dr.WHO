@@ -41,5 +41,11 @@ public class planetaController {
 		Planeta planetaCreado = PlanetaRepositorio.updatePlaneta(data.get("id").toString(), data.get("nombre").toString(), data.get("descripcion").toString());
 		return planetaCreado;
 	}
+	
+	@RequestMapping(value="/showPlaneta",method=RequestMethod.POST)
+    public Planeta showPlaneta(@RequestBody Map<String, Object> data) throws Exception {	
+		Planeta planetaCreado = PlanetaRepositorio.showPlaneta(data.get("id").toString());
+		return planetaCreado;
+	}
 
 }
