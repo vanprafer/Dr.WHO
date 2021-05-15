@@ -63,6 +63,14 @@ public class PlanetaRepositorio {
 		em.persist(planeta);
 		em.getTransaction().commit();
 		return planeta;	
-
+	}
+	
+	public static Planeta showPlaneta(String id) {
+		em = emf.createEntityManager();
+		em.getTransaction().begin();
+		
+		TypedQuery<Planeta> query = em.createQuery("select p From Planeta p where p.id = " +id, Planeta.class);
+		Planeta planeta = query.getSingleResult();
+		return planeta;
 	}
 }
