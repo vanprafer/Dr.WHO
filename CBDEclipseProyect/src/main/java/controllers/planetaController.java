@@ -35,5 +35,11 @@ public class planetaController {
     public void deletePlaneta(@RequestBody Map<String, Object> data) throws Exception {	
 		 PlanetaRepositorio.deletePlaneta(data.get("id").toString());
 	}
+	
+	@RequestMapping(value="/updatePlaneta",method=RequestMethod.POST)
+    public Planeta updatePlaneta(@RequestBody Map<String, Object> data) throws Exception {	
+		Planeta planetaCreado = PlanetaRepositorio.updatePlaneta(data.get("id").toString(), data.get("nombre").toString(), data.get("descripcion").toString());
+		return planetaCreado;
+	}
 
 }
