@@ -24,21 +24,21 @@ public class Individuo implements Serializable{
 	private Organismo organismo;
 	private String descripcion;	
 	
-	@ManyToMany(targetEntity=Planeta.class,	mappedBy="habitaEn")
-	private List<Planeta> planetas;
+	@ManyToMany(targetEntity=Planeta.class,	cascade=CascadeType.PERSIST)
+	private List<Planeta> habita;
 	
 	@OneToMany(mappedBy="usa", cascade=CascadeType.PERSIST,	fetch=FetchType.LAZY)
 	private List<Tecnologia> tecnologias;
 	
 	public Individuo(String nombre, Especie especie, Integer numCorazones, Organismo organismo,
-			String descripcion, List<Planeta> planetas, List<Tecnologia> tecnologias) {
+			String descripcion, List<Planeta> habita, List<Tecnologia> tecnologias) {
 		super();
 		this.nombre = nombre;
 		this.especie = especie;
 		this.numCorazones = numCorazones;
 		this.organismo = organismo;
 		this.descripcion = descripcion;
-		this.planetas = planetas;
+		this.habita = habita;
 		this.tecnologias = tecnologias;
 	}
 
@@ -71,11 +71,11 @@ public class Individuo implements Serializable{
 	}
 
 	public List<Planeta> getPlanetas() {
-		return planetas;
+		return habita;
 	}
 
-	public void setPlanetas(List<Planeta> planetas) {
-		this.planetas = planetas;
+	public void setPlanetas(List<Planeta> habita) {
+		this.habita = habita;
 	}
 
 	public List<Tecnologia> getTecnologia() {

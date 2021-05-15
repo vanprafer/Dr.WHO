@@ -34,13 +34,13 @@ public class main {
 			
 			try {
 				
-				//borrarObjetos("Individuo");
-				//borrarObjetos("Planeta");
-				//borrarObjetos("Tecnologia");
+				/*PopulateDB.borrarObjetos("Individuo", em);
+				PopulateDB.borrarObjetos("Planeta", em);
+				PopulateDB.borrarObjetos("Tecnologia", em);*/
 				
-				PopulateDB.creacionPlaneta();
-				PopulateDB.creacionTecnologias();
-				PopulateDB.creacionIndividuo();
+				PopulateDB.creacionPlaneta(em);
+				PopulateDB.creacionTecnologias(em);
+				PopulateDB.creacionIndividuo(em);
 
 			}
 			finally {

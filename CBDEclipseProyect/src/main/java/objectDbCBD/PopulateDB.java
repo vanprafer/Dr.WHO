@@ -16,13 +16,13 @@ public class PopulateDB {
 	
 	static EntityManager em;
 	
-	private static void borrarObjetos(String objeto){
+	public static void borrarObjetos(String objeto, EntityManager em){
 		em.getTransaction().begin();
 		int count = em.createQuery("DELETE FROM " + objeto).executeUpdate();
 		em.getTransaction().commit();
 	}
 	
-	public static void creacionPlaneta(){
+	public static void creacionPlaneta(EntityManager em){
 
 		em.getTransaction().begin();
 		Planeta e1 = new Planeta("Galifrei","Hogar de los seniores del tiempo, perdido en el tiempo y el espacio");
@@ -46,7 +46,7 @@ public class PopulateDB {
 		em.getTransaction().commit();
 	}
 	
-	public static void creacionTecnologias() {
+	public static void creacionTecnologias(EntityManager em) {
 		em.getTransaction().begin();
 		
 		Tecnologia t1 = new Tecnologia("Destornillador sonico", "Destornillador que emite ondas sonicas propiedad del Doctor");
@@ -83,7 +83,7 @@ public class PopulateDB {
 	}
 	
 	
-	public static void creacionIndividuo() {
+	public static void creacionIndividuo(EntityManager em) {
 		em.getTransaction().begin();
 		
 		TypedQuery<Planeta> queryP = em.createQuery("select p From Planeta p where p.nombre = 'Galifrei'", Planeta.class);
@@ -94,6 +94,7 @@ public class PopulateDB {
 		
 		List<Planeta> planetas1 = new ArrayList<Planeta>();
 		planetas1.add(p);
+		em.persist(p);
 		
 		List<Tecnologia> tecnologias1 = new ArrayList<Tecnologia>();
 		tecnologias1.add(t);
@@ -102,12 +103,18 @@ public class PopulateDB {
 				Especie.SENORDELTIEMPO, 2, Organismo.ORGANICO, 
 				"El doctor, la tormenta que se acerca, el exterminador de planetas",
 				planetas1, tecnologias1);
-		
 		em.persist(e1);
+		
+		List<Individuo> individuos = new ArrayList<Individuo>();
+		individuos.add(e1);
+		p.setIndividuos(individuos);
+		
+		
+		em.persist(p);
 		
 		//-----------------------------------------------------------------------------
 		
-		TypedQuery<Planeta> queryP2 = em.createQuery("select p From Planeta p where p.nombre = 'Skaro'", Planeta.class);
+		/*TypedQuery<Planeta> queryP2 = em.createQuery("select p From Planeta p where p.nombre = 'Skaro'", Planeta.class);
 		Planeta p2 = queryP2.getSingleResult();
 		
 		TypedQuery<Tecnologia> queryT2 = em.createQuery("select p From Tecnologia p where p.nombre = 'Caja de pandora'", Tecnologia.class);
@@ -161,7 +168,7 @@ public class PopulateDB {
 		
 		Individuo e4 = new Individuo("Cybermen generico", 
 				Especie.CYBERMAN, 1, Organismo.MIXTO, 
-				"Evolucion de los humanos, cebebro humano, corazon de maquina, no tienen sentimientos, solo conquistan",
+				"Evolucion de los humanos, cerebro humano, corazon de maquina, no tienen sentimientos, solo conquistan",
 				planetas4, tecnologias4);
 		em.persist(e4);
 		
@@ -199,7 +206,7 @@ public class PopulateDB {
 				Especie.HUMANO, 1, Organismo.ORGANICO, 
 				"Companiera del doctor, londinense, energica y un poco choni",
 				planetas6, tecnologias6);
-		em.persist(e6);
+		em.persist(e6);*/
 		
 		em.getTransaction().commit();
 	}
