@@ -1,19 +1,16 @@
 package objectDbCBD.Models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Tecnologia {
 
 	private static final long serialVersionUID = 1L;
-	
-	public Tecnologia(String nombre, String descripcion) {
-		super();
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-	}
 	
 	@Id @GeneratedValue
 	private long id;
@@ -21,6 +18,16 @@ public class Tecnologia {
 	private String nombre;
 	private String descripcion;
 	
+	public Tecnologia(String nombre, String descripcion) {
+		super();
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+	}
+
+	public long getId() {
+		return id;
+	}
+
 	public String getNombre() {
 		return nombre;
 	}

@@ -24,14 +24,14 @@ public class Individuo implements Serializable{
 	private Organismo organismo;
 	private String descripcion;	
 	
-	@ManyToMany(targetEntity=Planeta.class,	cascade=CascadeType.PERSIST)
+	@ManyToMany(targetEntity=Planeta.class,	cascade=CascadeType.PERSIST, fetch=FetchType.LAZY)
 	private List<Planeta> habita;
 	
-	@OneToMany(mappedBy="usa", cascade=CascadeType.PERSIST,	fetch=FetchType.LAZY)
-	private List<Tecnologia> tecnologias;
+	@OneToMany(cascade=CascadeType.PERSIST,	fetch=FetchType.LAZY)
+	private List<Tecnologia> esUsado;
 	
 	public Individuo(String nombre, Especie especie, Integer numCorazones, Organismo organismo,
-			String descripcion, List<Planeta> habita, List<Tecnologia> tecnologias) {
+			String descripcion, List<Planeta> habita, List<Tecnologia> esUsado) {
 		super();
 		this.nombre = nombre;
 		this.especie = especie;
@@ -39,7 +39,7 @@ public class Individuo implements Serializable{
 		this.organismo = organismo;
 		this.descripcion = descripcion;
 		this.habita = habita;
-		this.tecnologias = tecnologias;
+		this.esUsado = esUsado;
 	}
 
 	public String getNombre() {
@@ -78,12 +78,12 @@ public class Individuo implements Serializable{
 		this.habita = habita;
 	}
 
-	public List<Tecnologia> getTecnologia() {
-		return tecnologias;
+	public List<Tecnologia> getEsUsado() {
+		return esUsado;
 	}
 	
-	public void setTecnologias(List<Tecnologia> tecnologias) {
-		this.tecnologias = tecnologias;
+	public void setEsUsado(List<Tecnologia> esUsado) {
+		this.esUsado = esUsado;
 	}
 
 	@Override

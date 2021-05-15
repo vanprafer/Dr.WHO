@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -17,21 +18,11 @@ public class Planeta implements Serializable{
 	
 	private String nombre;
 	private String descripcion;
-	
-	@ManyToMany(targetEntity=Individuo.class, mappedBy="habita")
-	private List<Individuo> individuos;
 
 	public Planeta(String nombre, String descripcion) {
 		super();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-	}
-	
-	public Planeta(String nombre, String descripcion, List<Individuo> individuos) {
-		super();
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.individuos = individuos;
 	}
 
 	public String getNombre() {
@@ -52,15 +43,6 @@ public class Planeta implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Planeta [nombre=" + nombre + ", descripcion=" + descripcion + ", individuos="
-				+ individuos + "]";
-	}
-
-	public List<Individuo> getIndividuos() {
-		return individuos;
-	}
-
-	public void setIndividuos(List<Individuo> individuos) {
-		this.individuos = individuos;
+		return "Planeta [nombre=" + nombre + ", descripcion=" + descripcion + ", individuos=" + "]";
 	}
 }

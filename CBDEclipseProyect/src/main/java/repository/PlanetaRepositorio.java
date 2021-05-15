@@ -13,8 +13,7 @@ import objectDbCBD.Models.Planeta;
 public class PlanetaRepositorio {
 	
 	public static EntityManager em;
-	public static EntityManagerFactory emf = Persistence.createEntityManagerFactory("C:\\Users\\ErMamaweboPlus\\Desktop\\DataBase.odb");
-	
+	public static EntityManagerFactory emf = Persistence.createEntityManagerFactory("C:\\Users\\Vanessa\\Desktop\\DataBase.odb");
 	
 	public static Planeta createPlaneta(String nombre, String descripcion) {
 		

@@ -29,14 +29,14 @@ public class main {
     public void createDatabase() throws Exception {	
 	
 		try{
-			EntityManagerFactory emf = Persistence.createEntityManagerFactory("C:\\Users\\ErMamaweboPlus\\Desktop\\DataBase.odb");
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("C:\\Users\\Vanessa\\Desktop\\DataBase.odb");
 			em = emf.createEntityManager();
 			
 			try {
 				
-				/*PopulateDB.borrarObjetos("Individuo", em);
-				PopulateDB.borrarObjetos("Planeta", em);
-				PopulateDB.borrarObjetos("Tecnologia", em);*/
+//				PopulateDB.borrarObjetos("Individuo", em);
+//				PopulateDB.borrarObjetos("Planeta", em);
+//				PopulateDB.borrarObjetos("Tecnologia", em);
 				
 				PopulateDB.creacionPlaneta(em);
 				PopulateDB.creacionTecnologias(em);

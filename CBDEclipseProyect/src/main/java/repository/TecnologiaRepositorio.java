@@ -13,7 +13,7 @@ import objectDbCBD.Models.Tecnologia;
 public class TecnologiaRepositorio {
 	
 	public static EntityManager em;
-	public static EntityManagerFactory emf = Persistence.createEntityManagerFactory("C:\\Users\\ErMamaweboPlus\\Desktop\\DataBase.odb");
+	public static EntityManagerFactory emf = Persistence.createEntityManagerFactory("C:\\Users\\Vanessa\\Desktop\\DataBase.odb");
 	
 	
 	public static Tecnologia createTecnologia(String nombre, String descripcion) {
