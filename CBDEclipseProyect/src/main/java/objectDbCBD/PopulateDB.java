@@ -11,6 +11,7 @@ import objectDbCBD.Models.Individuo;
 import objectDbCBD.Models.Organismo;
 import objectDbCBD.Models.Planeta;
 import objectDbCBD.Models.Tecnologia;
+import repository.IndividuoRepositorio;
 
 public class PopulateDB {
 	
@@ -48,6 +49,8 @@ public class PopulateDB {
 	
 	public static void creacionTecnologias(EntityManager em) {
 		em.getTransaction().begin();
+		
+		//Individuo doctor = IndividuoRepositorio.getIndividuoPorNombre("select i From Individuo i where i.nombre = 'Skaro'", Individuo.class);
 		
 		Tecnologia t1 = new Tecnologia("Destornillador sonico", "Destornillador que emite ondas sonicas propiedad del Doctor");
 		em.persist(t1);
@@ -105,16 +108,9 @@ public class PopulateDB {
 				planetas1, tecnologias1);
 		em.persist(e1);
 		
-		List<Individuo> individuos = new ArrayList<Individuo>();
-		individuos.add(e1);
-		p.setIndividuos(individuos);
-		
-		
-		em.persist(p);
-		
 		//-----------------------------------------------------------------------------
 		
-		/*TypedQuery<Planeta> queryP2 = em.createQuery("select p From Planeta p where p.nombre = 'Skaro'", Planeta.class);
+		TypedQuery<Planeta> queryP2 = em.createQuery("select p From Planeta p where p.nombre = 'Skaro'", Planeta.class);
 		Planeta p2 = queryP2.getSingleResult();
 		
 		TypedQuery<Tecnologia> queryT2 = em.createQuery("select p From Tecnologia p where p.nombre = 'Caja de pandora'", Tecnologia.class);
@@ -206,7 +202,7 @@ public class PopulateDB {
 				Especie.HUMANO, 1, Organismo.ORGANICO, 
 				"Companiera del doctor, londinense, energica y un poco choni",
 				planetas6, tecnologias6);
-		em.persist(e6);*/
+		em.persist(e6);
 		
 		em.getTransaction().commit();
 	}
