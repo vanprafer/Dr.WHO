@@ -21,14 +21,19 @@ public class planetaController {
 	
 	@RequestMapping(value="/createPlaneta",method=RequestMethod.POST)
     public Planeta createPlaneta(@RequestBody Map<String, Object> data) throws Exception {	
-			Planeta planetaCreado = PlanetaRepositorio.createPlaneta(data.get("nombre").toString(), data.get("descripcion").toString());
+		Planeta planetaCreado = PlanetaRepositorio.createPlaneta(data.get("nombre").toString(), data.get("descripcion").toString());
 		return planetaCreado;
 	}
 	
 	@RequestMapping(value="/listPlaneta",method=RequestMethod.GET)
     public List<Planeta> listPlaneta() throws Exception {	
-			List<Planeta> listPlanetas = PlanetaRepositorio.listPlanetas();
+		List<Planeta> listPlanetas = PlanetaRepositorio.listPlanetas();
 		return listPlanetas;
+	}
+	
+	@RequestMapping(value="/deletePlaneta",method=RequestMethod.POST)
+    public void deletePlaneta(@RequestBody Map<String, Object> data) throws Exception {	
+		 PlanetaRepositorio.deletePlaneta(data.get("id").toString());
 	}
 
 }

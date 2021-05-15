@@ -20,7 +20,9 @@ public class PlanetaRepositorio {
 		
 		em = emf.createEntityManager();
 		em.getTransaction().begin();
+		
 		Planeta e1 = new Planeta(nombre,descripcion);
+		
 		em.persist(e1);
 		em.getTransaction().commit();
 		return e1;	
@@ -33,7 +35,17 @@ public class PlanetaRepositorio {
 		
 		TypedQuery<Planeta> queryP6 = em.createQuery("select p From Planeta p", Planeta.class);
 		planetas = queryP6.getResultList();
-		//em.getTransaction().commit();
 		return planetas;	
+	}
+	
+	public static void deletePlaneta(String idPlaneta) {
+		em = emf.createEntityManager();
+		em.getTransaction().begin();
+		
+		TypedQuery<Planeta> query = em.createQuery("select p From Planeta p where p.id = " +idPlaneta, Planeta.class);
+		Planeta planeta = query.getSingleResult();
+		
+		em.remove(planeta);
+		em.getTransaction().commit();
 	}
 }
