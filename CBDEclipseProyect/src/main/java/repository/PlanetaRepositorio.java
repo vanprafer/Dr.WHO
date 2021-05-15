@@ -48,4 +48,21 @@ public class PlanetaRepositorio {
 		em.remove(planeta);
 		em.getTransaction().commit();
 	}
+	
+	public static Planeta updatePlaneta(String id, String nombre, String descripcion) {
+		
+		em = emf.createEntityManager();
+		em.getTransaction().begin();
+		
+		TypedQuery<Planeta> query = em.createQuery("select p From Planeta p where p.id = " +id, Planeta.class);
+		Planeta planeta = query.getSingleResult();
+		
+		planeta.setNombre(nombre);
+		planeta.setDescripcion(descripcion);
+		
+		em.persist(planeta);
+		em.getTransaction().commit();
+		return planeta;	
+
+	}
 }
