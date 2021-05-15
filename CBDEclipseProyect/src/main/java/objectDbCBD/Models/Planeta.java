@@ -18,7 +18,7 @@ public class Planeta implements Serializable{
 	private String nombre;
 	private String descripcion;
 	
-	@ManyToMany(targetEntity=Individuo.class,	mappedBy="esHabitadoPor")
+	@ManyToMany(targetEntity=Individuo.class, mappedBy="habita")
 	private List<Individuo> individuos;
 
 	public Planeta(String nombre, String descripcion) {
@@ -54,5 +54,13 @@ public class Planeta implements Serializable{
 	public String toString() {
 		return "Planeta [nombre=" + nombre + ", descripcion=" + descripcion + ", individuos="
 				+ individuos + "]";
+	}
+
+	public List<Individuo> getIndividuos() {
+		return individuos;
+	}
+
+	public void setIndividuos(List<Individuo> individuos) {
+		this.individuos = individuos;
 	}
 }
