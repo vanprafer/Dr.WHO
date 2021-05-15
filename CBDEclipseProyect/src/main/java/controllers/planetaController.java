@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.List;
 import java.util.Map;
 import javax.persistence.EntityManager;
 import org.springframework.context.annotation.ComponentScan;
@@ -22,6 +23,12 @@ public class planetaController {
     public Planeta createPlaneta(@RequestBody Map<String, Object> data) throws Exception {	
 			Planeta planetaCreado = PlanetaRepositorio.createPlaneta(data.get("nombre").toString(), data.get("descripcion").toString());
 		return planetaCreado;
+	}
+	
+	@RequestMapping(value="/listPlaneta",method=RequestMethod.GET)
+    public List<Planeta> listPlaneta() throws Exception {	
+			List<Planeta> listPlanetas = PlanetaRepositorio.listPlanetas();
+		return listPlanetas;
 	}
 
 }
