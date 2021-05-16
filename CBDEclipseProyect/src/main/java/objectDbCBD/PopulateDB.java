@@ -11,7 +11,7 @@ import objectDbCBD.Models.Individuo;
 import objectDbCBD.Models.Organismo;
 import objectDbCBD.Models.Planeta;
 import objectDbCBD.Models.Tecnologia;
-import repository.IndividuoRepositorio;
+import objectDbCBD.repository.IndividuoRepositorio;
 
 public class PopulateDB {
 	
