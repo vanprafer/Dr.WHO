@@ -77,4 +77,14 @@ public class IndividuoRepositorio {
 		Individuo individuo = query.getSingleResult();
 		return individuo;
 	}
+	
+	public static List<Individuo> listarIndPorEspecie(String esp) {
+		List<Individuo> individuos = new ArrayList<Individuo>();
+		em = Configuracion.em;
+		
+		TypedQuery<Individuo> queryP6 = em.createQuery("select i From Individuo i where i.especie =?1 ", Individuo.class);
+		queryP6.setParameter(1, esp);
+		individuos = queryP6.getResultList();
+		return individuos;
+	}
 }

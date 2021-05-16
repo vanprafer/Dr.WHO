@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,6 +23,7 @@ public class Individuo implements Serializable{
 	private long id;
 	
 	private String nombre;
+	@Enumerated(EnumType.STRING)
 	private Especie especie;
 	private Integer numCorazones;
 	private Organismo organismo;
