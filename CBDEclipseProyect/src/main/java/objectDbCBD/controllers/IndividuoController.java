@@ -92,4 +92,10 @@ public class IndividuoController {
 		Individuo individuoCreado = IndividuoRepositorio.showIndividuo(data.get("id").toString());
 		return individuoCreado;
 	}
+	
+	@RequestMapping(value="/listEspecies",method=RequestMethod.POST)
+    public List<Individuo> listIndividuoPorEspecie(@RequestBody Map<String, Object> data) throws Exception {	
+		List<Individuo> listIndividuos = IndividuoRepositorio.listarIndPorEspecie(data.get("especie").toString());
+		return listIndividuos;
+	}
 }
