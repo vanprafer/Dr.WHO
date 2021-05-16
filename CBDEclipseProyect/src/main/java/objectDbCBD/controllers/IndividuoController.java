@@ -19,9 +19,9 @@ import objectDbCBD.Models.Individuo;
 import objectDbCBD.Models.Organismo;
 import objectDbCBD.Models.Planeta;
 import objectDbCBD.Models.Tecnologia;
-import repository.IndividuoRepositorio;
-import repository.PlanetaRepositorio;
-import repository.TecnologiaRepositorio;
+import objectDbCBD.repository.IndividuoRepositorio;
+import objectDbCBD.repository.PlanetaRepositorio;
+import objectDbCBD.repository.TecnologiaRepositorio;
 
 @RestController
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})

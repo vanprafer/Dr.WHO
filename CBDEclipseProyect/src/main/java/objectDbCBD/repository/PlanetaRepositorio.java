@@ -1,23 +1,21 @@
-package repository;
+package objectDbCBD.repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
+import objectDbCBD.Configuracion;
 import objectDbCBD.Models.Planeta;
 
 public class PlanetaRepositorio {
 	
 	public static EntityManager em;
-	public static EntityManagerFactory emf = Persistence.createEntityManagerFactory("C:\\Users\\Vanessa\\Desktop\\DataBase.odb");
 	
 	public static Planeta createPlaneta(String nombre, String descripcion) {
 		
-		em = emf.createEntityManager();
+		em = Configuracion.em;
 		em.getTransaction().begin();
 		
 		Planeta e1 = new Planeta(nombre,descripcion);
@@ -29,8 +27,7 @@ public class PlanetaRepositorio {
 	
 	public static List<Planeta> listPlanetas(){
 		List<Planeta> planetas = new ArrayList<Planeta>();
-		em = emf.createEntityManager();
-		em.getTransaction().begin();
+		em = Configuracion.em;
 		
 		TypedQuery<Planeta> queryP6 = em.createQuery("select p From Planeta p", Planeta.class);
 		planetas = queryP6.getResultList();
@@ -38,7 +35,7 @@ public class PlanetaRepositorio {
 	}
 	
 	public static void deletePlaneta(String idPlaneta) {
-		em = emf.createEntityManager();
+		em = Configuracion.em;
 		em.getTransaction().begin();
 		
 		TypedQuery<Planeta> query = em.createQuery("select p From Planeta p where p.id = " +idPlaneta, Planeta.class);
@@ -50,7 +47,7 @@ public class PlanetaRepositorio {
 	
 	public static Planeta updatePlaneta(String id, String nombre, String descripcion) {
 		
-		em = emf.createEntityManager();
+		em = Configuracion.em;
 		em.getTransaction().begin();
 		
 		TypedQuery<Planeta> query = em.createQuery("select p From Planeta p where p.id = " +id, Planeta.class);
@@ -65,8 +62,7 @@ public class PlanetaRepositorio {
 	}
 	
 	public static Planeta showPlaneta(String id) {
-		em = emf.createEntityManager();
-		em.getTransaction().begin();
+		em = Configuracion.em;
 		
 		TypedQuery<Planeta> query = em.createQuery("select p From Planeta p where p.id = " +id, Planeta.class);
 		Planeta planeta = query.getSingleResult();
