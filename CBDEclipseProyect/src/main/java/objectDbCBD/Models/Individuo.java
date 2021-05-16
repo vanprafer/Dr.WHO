@@ -70,13 +70,6 @@ public class Individuo implements Serializable{
 		this.descripcion = descripcion;
 	}
 
-	public List<Planeta> getPlanetas() {
-		return habita;
-	}
-
-	public void setPlanetas(List<Planeta> habita) {
-		this.habita = habita;
-	}
 
 	public List<Tecnologia> getEsUsado() {
 		return esUsado;
@@ -84,6 +77,26 @@ public class Individuo implements Serializable{
 	
 	public void setEsUsado(List<Tecnologia> esUsado) {
 		this.esUsado = esUsado;
+	}
+	
+	public List<Planeta> getHabita() {
+		return habita;
+	}
+
+	public void setHabita(List<Planeta> habita) {
+		this.habita = habita;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setNumCorazones(Integer numCorazones) {
+		this.numCorazones = numCorazones;
+	}
+
+	public void setOrganismo(Organismo organismo) {
+		this.organismo = organismo;
 	}
 
 	@Override
