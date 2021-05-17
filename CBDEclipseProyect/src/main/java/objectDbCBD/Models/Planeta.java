@@ -23,6 +23,10 @@ public class Planeta implements Serializable{
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 	}
+	
+	public long getId() {
+		return id;
+	}
 
 	public String getNombre() {
 		return nombre;
@@ -44,4 +48,6 @@ public class Planeta implements Serializable{
 	public String toString() {
 		return "Planeta [nombre=" + nombre + ", descripcion=" + descripcion + ", individuos=" + "]";
 	}
+
+	
 }
