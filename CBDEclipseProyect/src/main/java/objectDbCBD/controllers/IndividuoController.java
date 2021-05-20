@@ -36,15 +36,15 @@ public class IndividuoController {
 		List<Tecnologia> lt = new ArrayList<>();
 		List<Planeta> lp = new ArrayList<>();
 		
-		List<Integer> idsTec = (List) data.get("tecnologias");
-		List<Integer> idsPla = (List) data.get("planetas");
+		List<String> idsTec = (List) data.get("tecnologias");
+		List<String> idsPla = (List) data.get("planetas");
 		
-		for(Integer t: idsTec) {
-			lt.add(TecnologiaRepositorio.showTecnologia(t.toString()));
+		for(String t: idsTec) {
+			lt.add(TecnologiaRepositorio.showTecnologia(t)); // ParseInt
 		}
 		
-		for(Integer p: idsPla) {
-			lp.add(PlanetaRepositorio.showPlaneta(p.toString()));
+		for(String p: idsPla) {
+			lp.add(PlanetaRepositorio.showPlaneta(p)); // ParseInt
 		}
 	
 		Individuo individuopCreado = IndividuoRepositorio.createIndividuo(data.get("nombre").toString(), 
@@ -70,15 +70,15 @@ public class IndividuoController {
 		List<Tecnologia> lt = new ArrayList<>();
 		List<Planeta> lp = new ArrayList<>();
 		
-		List<Integer> idsTec = (List) data.get("tecnologias");
-		List<Integer> idsPla = (List) data.get("planetas");
+		List<String> idsTec = (List) data.get("tecnologias");
+		List<String> idsPla = (List) data.get("planetas");
 		
-		for(Integer t: idsTec) {
-			lt.add(TecnologiaRepositorio.showTecnologia(t.toString()));
+		for(String t: idsTec) {
+			lt.add(TecnologiaRepositorio.showTecnologia(t));
 		}
 		
-		for(Integer p: idsPla) {
-			lp.add(PlanetaRepositorio.showPlaneta(p.toString()));
+		for(String p: idsPla) {
+			lp.add(PlanetaRepositorio.showPlaneta(p));
 		}
 		
 		Individuo indCreado = IndividuoRepositorio.updateIndividuo(data.get("id").toString(), 
