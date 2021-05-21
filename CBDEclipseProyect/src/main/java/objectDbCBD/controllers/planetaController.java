@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import objectDbCBD.Models.Individuo;
 import objectDbCBD.Models.Planeta;
+import objectDbCBD.repository.IndividuoRepositorio;
 import objectDbCBD.repository.PlanetaRepositorio;
 
 @RestController
@@ -33,7 +36,12 @@ public class planetaController {
 	
 	@RequestMapping(value="/deletePlaneta",method=RequestMethod.POST)
     public void deletePlaneta(@RequestBody Map<String, Object> data) throws Exception {	
-		 PlanetaRepositorio.deletePlaneta(data.get("id").toString());
+		Planeta p = PlanetaRepositorio.showPlaneta(data.get("id").toString());
+		List<Individuo> i =IndividuoRepositorio.updateWhenDeletePlanet(p);
+		for(Individuo ind: i) {
+			ind.getHabita().remove(p);
+		}
+		PlanetaRepositorio.deletePlaneta(data.get("id").toString());
 	}
 	
 	@RequestMapping(value="/updatePlaneta",method=RequestMethod.POST)

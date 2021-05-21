@@ -87,4 +87,24 @@ public class IndividuoRepositorio {
 		individuos = queryP6.getResultList();
 		return individuos;
 	}
+	
+	public static List<Individuo> updateWhenDeletePlanet(Planeta p) {
+		List<Individuo> individuos = new ArrayList<Individuo>();
+		em = Configuracion.em;
+		
+		TypedQuery<Individuo> queryP6 = em.createQuery("select i From Individuo i where ?1 in i.habita", Individuo.class);
+		queryP6.setParameter(1, p);
+		individuos = queryP6.getResultList();
+		return individuos;
+	}
+	
+	public static List<Individuo> updateWhenDeleteTech(Tecnologia t) {
+		List<Individuo> individuos = new ArrayList<Individuo>();
+		em = Configuracion.em;
+		
+		TypedQuery<Individuo> queryP6 = em.createQuery("select i From Individuo i where ?1 in i.esUsado", Individuo.class);
+		queryP6.setParameter(1, t);
+		individuos = queryP6.getResultList();
+		return individuos;
+	}
 }

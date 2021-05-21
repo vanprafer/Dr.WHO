@@ -9,7 +9,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import objectDbCBD.Models.Individuo;
+import objectDbCBD.Models.Planeta;
 import objectDbCBD.Models.Tecnologia;
+import objectDbCBD.repository.IndividuoRepositorio;
+import objectDbCBD.repository.PlanetaRepositorio;
 import objectDbCBD.repository.TecnologiaRepositorio;
 
 @RestController
@@ -33,6 +38,11 @@ public class tecnologiaController {
 	
 	@RequestMapping(value="/deleteTecnologia",method=RequestMethod.POST)
     public void deleteTecnologia(@RequestBody Map<String, Object> data) throws Exception {	
+		Tecnologia t =  TecnologiaRepositorio.showTecnologia(data.get("id").toString());
+		List<Individuo> i =IndividuoRepositorio.updateWhenDeleteTech(t);
+		for(Individuo ind: i) {
+			ind.getEsUsado().remove(t);
+		}
 		 TecnologiaRepositorio.deleteTecnologia(data.get("id").toString());
 	}
 	
